@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ==================== Form View ==================== -->
+    <record id="student_form_view" model="ir.ui.view">
+        <field name="name">student.student.form</field>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <form string="Student">
+                <!-- Header with status bar and buttons -->
+                <header>
+                    <button name="action_activate" type="object" string="Activate" class="btn btn-success" states="new,inactive"/>
+                    <button name="action_deactivate" type="object" string="Deactivate" class="btn btn-warning" states="active"/>
+                    <button name="action_graduate" type="object" string="Graduate" class="btn btn-info" states="active"/>
+                    <field name="status" widget="statusbar" options="{'clickable': True}" nolabel="1"/>
+                </header>
+                
+                <!-- Main form content -->
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="is_active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" class="oe_inline" placeholder="Student Name"/>
+                        </h1>
+                    </div>
+                    
+                    <!-- Basic Information Group -->
+                    <group>
+                        <group>
+                            <field name="registration_number"/>
+                            <field name="email" widget="email"/>
+                            <field name="phone" widget="phone"/>
+                        </group>
+                        <group>
+                            <field name="birth_date"/>
+                            <field name="age"/>
+                            <field name="department_id"/>
+                        </group>
+                    </group>
+                    
+                    <!-- Tabs for additional information -->
+                    <notebook>
+                        <!-- Courses Tab -->
+                        <page string="Courses" name="courses">
+                            <field name="course_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                            <field name="enrollment_count" invisible="1"/>
+                        </page>
+                        
+                        <!-- Additional Information Tab -->
+                        <page string="Additional Information" name="additional">
+                            <group>
+                                <field name="notes"/>
+                            </group>
+                        </page>
+                        
+                        <!-- Metadata Tab -->
+                        <page string="Metadata" name="metadata">
+                            <group>
+                                <field name="created_date" readonly="1"/>
+                                <field name="modified_date" readonly="1"/>
+                                <field name="is_active"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                
+                <!-- Footer with save and cancel buttons -->
+                <footer>
+                    <button string="Save" type="object" class="btn btn-primary" special="save"/>
+                    <button string="Cancel" type="object" special="cancel" class="btn btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <!-- ==================== List View ==================== -->
+    <record id="student_list_view" model="ir.ui.view">
+        <field name="name">student.student.list</field>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <tree string="Students" edit="false" delete="false">
+                <field name="name"/>
+                <field name="registration_number"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="birth_date"/>
+                <field name="age"/>
+                <field name="status" widget="badge" decoration-success="status == 'active'" decoration-warning="status == 'new'" decoration-danger="status == 'dropped'"/>
+                <field name="department_id"/>
+                <field name="enrollment_count"/>
+                <field name="is_active" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- ==================== Search View ==================== -->
+    <record id="student_search_view" model="ir.ui.view">
+        <field name="name">student.student.search</field>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <search string="Search Students">
+                <!-- Search fields -->
+                <field name="name" string="Student Name" filter_domain="[('name', 'ilike', self)]"/>
+                <field name="email" filter_domain="[('email', 'ilike', self)]"/>
+                <field name="registration_number" filter_domain="[('registration_number', 'ilike', self)]"/>
+                <field name="department_id"/>
+                
+                <!-- Separator -->
+                <separator/>
+                
+                <!-- Quick filters -->
+                <filter string="Active" name="filter_active" domain="[('status', '=', 'active')]"/>
+                <filter string="New" name="filter_new" domain="[('status', '=', 'new')]"/>
+                <filter string="Inactive" name="filter_inactive" domain="[('status', '=', 'inactive')]"/>
+                <filter string="Graduated" name="filter_graduated" domain="[('status', '=', 'graduated')]"/>
+                <filter string="Dropped" name="filter_dropped" domain="[('status', '=', 'dropped')]"/>
+                
+                <!-- Status filter with dot separator -->
+                <separator/>
+                
+                <!-- Advanced filters -->
+                <filter string="Archived" name="filter_archived" domain="[('is_active', '=', False)]"/>
+                
+                <!-- Group by options -->
+                <group expand="1" string="Group By">
+                    <filter string="Status" name="group_by_status" context="{'group_by': 'status'}"/>
+                    <filter string="Department" name="group_by_department" context="{'group_by': 'department_id'}"/>
+                    <filter string="Created Date" name="group_by_created" context="{'group_by': 'created_date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <!-- ==================== Kanban View ==================== -->
+    <record id="student_kanban_view" model="ir.ui.view">
+        <field name="name">student.student.kanban</field>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_small_column">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="status"/>
+                <field name="age"/>
+                <field name="enrollment_count"/>
+                
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click" t-att-data-id="record.id.raw_value">
+                            <!-- Card header with status badge -->
+                            <div class="oe_kanban_card_header">
+                                <div class="o_kanban_card_header_title">
+                                    <strong><field name="name"/></strong>
+                                </div>
+                                <div class="o_kanban_card_header_right">
+                                    <span t-attf-class="badge #{record.status.raw_value == 'active' and 'badge-success' or record.status.raw_value == 'new' and 'badge-warning' or record.status.raw_value == 'graduated' and 'badge-info' or 'badge-secondary'}">
+                                        <field name="status"/>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Card body -->
+                            <div class="oe_kanban_card_body">
+                                <p>
+                                    <strong>Email: </strong>
+                                    <field name="email"/>
+                                </p>
+                                <p>
+                                    <strong>Age: </strong>
+                                    <field name="age"/>
+                                </p>
+                                <p>
+                                    <strong>Courses: </strong>
+                                    <field name="enrollment_count"/>
+                                </p>
+                            </div>
+                            
+                            <!-- Card footer -->
+                            <div class="oe_kanban_card_footer">
+                                <button type="object" name="action_activate" string="Activate" class="btn btn-sm btn-success"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    
+    <!-- ==================== Window Actions ==================== -->
+    <record id="action_student_list" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">student.student</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="search_view_id" ref="student_search_view"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No students found. Let's create one!
+            </p>
+            <p>
+                Create a new student to get started. Students can be assigned to departments and enrolled in courses.
+            </p>
+        </field>
+    </record>
+    
+    <!-- ==================== View References ==================== -->
+    <record id="student_form_action" model="ir.actions.act_window">
+        <field name="name">Create Student</field>
+        <field name="res_model">student.student</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="student_form_view"/>
+    </record>
+
+</odoo>

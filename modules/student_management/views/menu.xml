@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ==================== Main Menu ==================== -->
+    <menuitem id="menu_student_root" 
+        name="Student Management" 
+        web_icon="student_management,static/description/icon.png"
+        sequence="1"/>
+    
+    <!-- ==================== Students Submenu ==================== -->
+    <menuitem id="menu_student_list" 
+        name="Students" 
+        parent="menu_student_root"
+        action="action_student_list"
+        sequence="10"/>
+    
+    <!-- ==================== Create Student Quick Access ==================== -->
+    <menuitem id="menu_student_create" 
+        name="Create Student" 
+        parent="menu_student_root"
+        action="student_form_action"
+        sequence="20"/>
+    
+    <!-- ==================== Reports Submenu ==================== -->
+    <menuitem id="menu_student_reports" 
+        name="Reports" 
+        parent="menu_student_root"
+        sequence="30"/>
+    
+    <!-- ==================== Configuration Submenu ==================== -->
+    <menuitem id="menu_student_config" 
+        name="Configuration" 
+        parent="menu_student_root"
+        sequence="40"/>
+
+</odoo>

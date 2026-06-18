@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        
+        <!-- ==================== Sample Students ==================== -->
+        
+        <record id="student_001" model="student.student">
+            <field name="name">John Doe</field>
+            <field name="registration_number">STU-2024-001</field>
+            <field name="email">john.doe@example.com</field>
+            <field name="phone">+1234567890</field>
+            <field name="birth_date">2005-03-15</field>
+            <field name="status">active</field>
+            <field name="is_active">True</field>
+            <field name="notes">Excellent student, very dedicated to studies.</field>
+        </record>
+        
+        <record id="student_002" model="student.student">
+            <field name="name">Jane Smith</field>
+            <field name="registration_number">STU-2024-002</field>
+            <field name="email">jane.smith@example.com</field>
+            <field name="phone">+1234567891</field>
+            <field name="birth_date">2006-07-22</field>
+            <field name="status">active</field>
+            <field name="is_active">True</field>
+            <field name="notes">Good student with average grades.</field>
+        </record>
+        
+        <record id="student_003" model="student.student">
+            <field name="name">Michael Johnson</field>
+            <field name="registration_number">STU-2024-003</field>
+            <field name="email">michael.johnson@example.com</field>
+            <field name="phone">+1234567892</field>
+            <field name="birth_date">2007-11-30</field>
+            <field name="status">new</field>
+            <field name="is_active">True</field>
+            <field name="notes">New student, recently enrolled.</field>
+        </record>
+        
+        <record id="student_004" model="student.student">
+            <field name="name">Sarah Williams</field>
+            <field name="registration_number">STU-2024-004</field>
+            <field name="email">sarah.williams@example.com</field>
+            <field name="phone">+1234567893</field>
+            <field name="birth_date">2004-05-12</field>
+            <field name="status">graduated</field>
+            <field name="is_active">False</field>
+            <field name="notes">Graduated with distinction. Now alumni.</field>
+        </record>
+        
+        <record id="student_005" model="student.student">
+            <field name="name">David Brown</field>
+            <field name="registration_number">STU-2024-005</field>
+            <field name="email">david.brown@example.com</field>
+            <field name="phone">+1234567894</field>
+            <field name="birth_date">2005-09-08</field>
+            <field name="status">inactive</field>
+            <field name="is_active">False</field>
+            <field name="notes">Student on leave of absence.</field>
+        </record>
+        
+        <!-- ==================== More Sample Students ==================== -->
+        
+        <record id="student_006" model="student.student">
+            <field name="name">Emma Davis</field>
+            <field name="registration_number">STU-2024-006</field>
+            <field name="email">emma.davis@example.com</field>
+            <field name="phone">+1234567895</field>
+            <field name="birth_date">2006-01-25</field>
+            <field name="status">active</field>
+            <field name="is_active">True</field>
+            <field name="notes">Bright student with interest in science.</field>
+        </record>
+        
+        <record id="student_007" model="student.student">
+            <field name="name">Oliver Martinez</field>
+            <field name="registration_number">STU-2024-007</field>
+            <field name="email">oliver.martinez@example.com</field>
+            <field name="phone">+1234567896</field>
+            <field name="birth_date">2005-06-14</field>
+            <field name="status">active</field>
+            <field name="is_active">True</field>
+            <field name="notes">Sports enthusiast and good academician.</field>
+        </record>
+        
+        <record id="student_008" model="student.student">
+            <field name="name">Sophia Garcia</field>
+            <field name="registration_number">STU-2024-008</field>
+            <field name="email">sophia.garcia@example.com</field>
+            <field name="phone">+1234567897</field>
+            <field name="birth_date">2006-08-19</field>
+            <field name="status">active</field>
+            <field name="is_active">True</field>
+            <field name="notes">Creative thinker with artistic talents.</field>
+        </record>
+        
+    </data>
+</odoo>
