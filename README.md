@@ -11,7 +11,18 @@ This project contains:
 - A companion `course_management` module
 - Interview preparation resources
 - Step-by-step installation guides
+## 🎓 Learning Objectives
 
+By completing this repository, learners will understand:
+
+- Odoo Architecture
+- Odoo ORM
+- Custom Module Development
+- Views and XML Configuration
+- Security and Access Rights
+- PostgreSQL Integration
+- Testing Odoo Applications
+- Best Practices for Odoo Development
 ## 🚀 Quick Start
 
 ### Prerequisites
