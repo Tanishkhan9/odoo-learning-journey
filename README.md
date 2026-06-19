@@ -2,6 +2,16 @@
 
 A comprehensive guide and practical implementation for learning Odoo development from scratch.
 
+## 🛠 Technologies Used
+
+- Python
+- Odoo
+- PostgreSQL
+- XML
+- Git & GitHub
+- Docker
+- VS Code
+
 ## 📚 Project Overview
 
 This project contains:
