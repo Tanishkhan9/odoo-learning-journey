@@ -99,6 +99,18 @@ odoo-learning-journey/
 └── tests/                         # Unit tests
 ```
 
+## 🚀 Future Enhancements
+
+Planned additions:
+
+- Employee Management Module
+- Library Management Module
+- REST API Integration
+- Custom Reports (PDF/Excel)
+- Odoo Controllers
+- Website Module Development
+- Dockerized Odoo Deployment
+- CI/CD using GitHub Actions
 ## 🎯 Learning Roadmap
 
 1. **Week 1-2**: Setup & Installation
