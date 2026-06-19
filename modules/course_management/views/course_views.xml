@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="course_form_view" model="ir.ui.view">
+        <field name="name">course.course.form</field>
+        <field name="model">course.course</field>
+        <field name="arch" type="xml">
+            <form string="Course">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="duration_weeks"/>
+                        <field name="is_active"/>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="course_tree_view" model="ir.ui.view">
+        <field name="name">course.course.tree</field>
+        <field name="model">course.course</field>
+        <field name="arch" type="xml">
+            <tree string="Courses">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="duration_weeks"/>
+                <field name="is_active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="course_search_view" model="ir.ui.view">
+        <field name="name">course.course.search</field>
+        <field name="model">course.course</field>
+        <field name="arch" type="xml">
+            <search string="Search Courses">
+                <field name="name"/>
+                <field name="code"/>
+                <filter string="Active" name="active_courses" domain="[('is_active', '=', True)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_course_list" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">course.course</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="course_search_view"/>
+    </record>
+</odoo>

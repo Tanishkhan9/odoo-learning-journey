@@ -8,6 +8,7 @@ This project contains:
 - Complete documentation covering Odoo fundamentals
 - Practical examples and best practices
 - A functional `student_management` module
+- A companion `course_management` module
 - Interview preparation resources
 - Step-by-step installation guides
 
@@ -37,6 +38,7 @@ This project contains:
 
 4. **Install the Module**
    - Place the `student_management` module in your Odoo addons path
+   - Place the `course_management` module in your Odoo addons path
    - Update app list and install the module
 
 ## 📖 Documentation
@@ -57,6 +59,7 @@ This project contains:
 - [09 - Common Errors and Fixes](docs/09-common-errors-and-fixes.md)
 - [10 - Interview Questions](docs/10-interview-questions.md)
 - [11 - Learning Roadmap](docs/11-learning-roadmap.md)
+- [12 - Docker Setup](docs/12-docker-setup.md)
 
 ## 📁 Project Structure
 
@@ -64,6 +67,7 @@ This project contains:
 odoo-learning-journey/
 ├── docs/                          # Documentation files
 ├── modules/
+│   ├── course_management/         # Companion Odoo module
 │   └── student_management/        # Example Odoo module
 │       ├── models/                # Business logic
 │       ├── views/                 # UI definitions

@@ -5,7 +5,7 @@
     'sequence': 1,
     'description': 'Student Management System - A practical example module for learning Odoo development',
     'author': 'Odoo Learning Journey',
-    'depends': ['base'],
+    'depends': ['base', 'course_management'],
     'installable': True,
     'application': True,
     'auto_install': False,
