@@ -101,9 +101,16 @@ See `requirements.txt` for all dependencies.
 
 This project is for educational purposes.
 
+
+![Odoo](https://img.shields.io/badge/Odoo-ERP-purple)
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue)
+![License](https://img.shields.io/badge/License-Educational-green)
+
+
 ## 👤 Author
 
-Tanishk Khan
+Tanish Khan
 
 ## 🤝 Contributing
 
